@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <style>
+        input{
+            height: 30px;
+            border: 3px solid transparent;
+            border-radius: 5px;
+            color: rgb(6, 144, 110);
+            background-color: rgb(233, 250, 243);
+         }
+         button{
+            padding: 10px;
+            background-color: rgb(4, 180, 136);
+            border:1px solid rgb(4, 180, 136);
+            border-radius: 10px;
+            color:white;
+         }
+    </style>
+</head>
+<body><br><br><br><br><br><br>
+    <center>
+        <input type="text" placeholder="Enter Loan Amount" id="loan"><br><br>
+        <input type="text" placeholder="Enter Rate of Interest" id="rate"><br><br>
+        <input type="text" placeholder="Enter Loan tenure" id="tenure"><br><br>
+        <button onclick="monthlyemi()">Check Monthly EMI</button><br><br>
+        <button onclick="principal()">Check Principal Amount</button><br><br>
+        <button onclick="interest()">Check Total Interest</button><br><br>
+        <button onclick="amount()">Check Total Amount</button>
+    </center>
+    <script>
+        function monthlyemi(){
+            let p = document.getElementById("loan").value;
+            let rate = document.getElementById("rate").value;
+            let yr = document.getElementById("tenure").value;
+            let r = rate/12/100;
+            let n = yr*12;
+            let rate1 = (1+r)**n;
+            let monthlyemi = (p*r*rate1)/(rate1-1);
+            document.writeln(monthlyemi);
+        }
+        function principal(){
+            let principal = document.getElementById("loan").value;
+            document.writeln(principal);
+        }
+        function interest(){
+            let p = document.getElementById("loan").value;
+            let rate = document.getElementById("rate").value;
+            let yr = document.getElementById("tenure").value;
+            let r = rate/12/100;
+            let n = yr*12;
+            let rate1 = (1+r)**n;
+            let monthlyemi = (p*r*rate1)/(rate1-1);
+            let totalinterest = (monthlyemi*n)-p;
+            document.writeln(totalinterest);
+        }
+        function amount(){
+             let p = document.getElementById("loan").value;
+            let rate = document.getElementById("rate").value;
+            let yr = document.getElementById("tenure").value;
+            let r = rate/12/100;
+            let n = yr*12;
+            let rate1 = (1+r)**n;
+            let monthlyemi = (p*r*rate1)/(rate1-1);
+            let amount = monthlyemi*n;
+            document.writeln(amount);
+        }
+    </script>
+</body>
+</html>
